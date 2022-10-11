@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -10,7 +8,7 @@ class VideoList extends StatefulWidget {
   final bool looping;
 
   VideoList(
-      {required this.videoPlayerController,required this.looping, Key? key})
+      {required this.videoPlayerController, required this.looping, Key? key})
       : super(key: key);
 
   @override
@@ -27,13 +25,17 @@ class _VideoListState extends State<VideoList> {
       videoPlayerController: widget.videoPlayerController,
       aspectRatio: 16 / 9,
       autoInitialize: true,
+      autoPlay: true,
       looping: widget.looping,
       //error handling if url is non existent
       errorBuilder: (context, errorMessage) {
         return Center(
-          child: Text(
-            errorMessage,
-            style: TextStyle(color: Colors.white),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              errorMessage,
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         );
       },
@@ -44,7 +46,9 @@ class _VideoListState extends State<VideoList> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Chewie(controller: _chewieController),
+      child: Chewie(
+        controller: _chewieController,
+      ),
     );
   }
 

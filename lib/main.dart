@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vid_player/chewie_video_items.dart';
 
@@ -33,9 +32,15 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          // VideoList(
-          //     videoPlayerController: VideoPlayerController.asset()looping: true,),
-          // VideoList(videoPlayerController: VideoPlayerController.network())
+          VideoList(
+            videoPlayerController:
+                VideoPlayerController.asset('vid_player\assets\assets.mp4'),
+            looping: true,
+          ),
+          VideoList(
+            videoPlayerController: VideoPlayerController.network('https://www.pexels.com/video/a-rocky-river-in-the-forest-5896379/'),
+            looping: false,
+          ),
         ],
       ),
     );
